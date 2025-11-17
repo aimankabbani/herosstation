@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /vendor/
 node_modules/
 npm-debug.log
@@ -30,6 +31,8 @@ Homestead.json
 .phpactor.json
 auth.json
 =======
+=======
+>>>>>>> 03a8830e0d90ea20422b81755d39f9fdbb545142
 *.log
 .DS_Store
 .env
@@ -54,4 +57,7 @@ auth.json
 Homestead.json
 Homestead.yaml
 Thumbs.db
+<<<<<<< HEAD
 >>>>>>> 803cbe7 (Set up a fresh Laravel app)
+=======
+>>>>>>> 03a8830e0d90ea20422b81755d39f9fdbb545142
