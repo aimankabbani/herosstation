@@ -13,7 +13,6 @@ class PhoneNumbers extends Model
 
 
     protected $casts = [
-        'hall_id' => StationType::class,
         'created_at' => 'datetime:Y-d-m H:i',
     ];
 

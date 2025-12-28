@@ -4,7 +4,6 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MainSiteController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PhoneNumberController;
-use App\Models\Site;
 use Illuminate\Support\Facades\Route;
 
 /*
