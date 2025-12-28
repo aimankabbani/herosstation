@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\PhoneNumberService;
 use App\Models\Countries;
-use App\Models\Halls;
+use App\StationType;
 use Illuminate\Http\Request;
 
 class PhoneNumberController extends Controller
@@ -17,10 +17,18 @@ class PhoneNumberController extends Controller
         $this->phoneNumberService = $service;
     }
 
-    public function index()
+    public function bowlingStation()
     {
         $countries = Countries::all();
-        return view('user.create', ['countries' => $countries]);
+        $hallId = StationType::BOWLING_STATION;
+        return view('user.create', ['countries' => $countries, 'hallId' => $hallId]);
+    }
+
+    public function cartingStation()
+    {
+        $countries = Countries::all();
+        $hallId = StationType::CARTING_STATION;
+        return view('user.create', ['countries' => $countries, 'hallId' => $hallId]);
     }
 
     public function create(Request $request)

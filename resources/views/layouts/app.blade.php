@@ -1,52 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="@yield('htmlClass')">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title', 'Devis Portfolio')</title>
 
-    {{-- Bootstrap CSS --}}
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-        rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="@yield('meta_description', 'Personal portfolio website')">
 
+    {{-- Fonts --}}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    {{-- Optional: Your Custom CSS --}}
-    <style>
-        body {
-            background-color: #f5f5f5;
-        }
-    </style>
+    {{-- Main CSS --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
-    @yield('head')
+    @stack('styles')
 </head>
 
-<body>
+<body class="@yield('bodyClass')">
 
-    <nav class="navbar navbar-light bg-white shadow-sm sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="/images/herosstaion_logo.png" alt="Logo" height="40">
-            </a>
-        </div>
-    </nav>
-    {{-- Main Content --}}
+    {{-- Navbar --}}
+    @include('partials.navbar')
+
+    {{-- Page Content --}}
     <main>
         @yield('content')
     </main>
 
-    {{-- Bootstrap JS --}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    {{-- Footer --}}
+    @include('partials.footer')
 
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+    {{-- JS (optional, clean) --}}
+    <script>
+        // 🌙 Dark mode toggle (ready for DB/session later)
+        function toggleTheme() {
+            document.body.classList.toggle('dark')
+        }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    @yield('scripts')
+    @stack('scripts')
 
 </body>
-
 </html>

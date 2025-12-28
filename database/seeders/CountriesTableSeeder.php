@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Countries;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class CountriesTableSeeder extends Seeder
@@ -272,6 +271,5 @@ class CountriesTableSeeder extends Seeder
             ["name" => "Zimbabwe", "dial_code" => "+263", "code" => "ZW", "flag" => "🇿🇼"]
         ];
         Countries::insert($countries);
-        // DB::table('countries')->insert($countries);
     }
 }

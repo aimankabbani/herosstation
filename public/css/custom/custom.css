@@ -1,0 +1,120 @@
+/* =========================
+   Global
+========================= */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================
+   Hero Carousel
+========================= */
+.hero {
+    position: relative;
+    height: 70vh;
+    overflow: hidden;
+}
+
+/* Make carousel fill hero */
+.hero .carousel,
+.hero .carousel-inner,
+.hero .carousel-item {
+    height: 100%;
+}
+
+/* Hero image */
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Caption overlay */
+.carousel-caption {
+    position: absolute;
+    inset: 0;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45);
+    text-align: center;
+    padding: 2rem;
+}
+
+.carousel-caption h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* =========================
+   Sites Grid
+========================= */
+.site-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.site-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.site-card img.banner {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.site-card:hover img.banner {
+    transform: scale(1.05);
+}
+
+.site-card .card-body {
+    padding: 1rem;
+    background: #fff;
+}
+
+.site-card h5 {
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+.site-card p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.site-card .btn-visit {
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* =========================
+   Footer
+========================= */
+footer {
+    background: #222;
+    color: #ddd;
+    padding: 40px 0;
+    text-align: center;
+    margin-top: 60px;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 768px) {
+    .hero {
+        height: 50vh;
+    }
+
+    .carousel-caption h1 {
+        font-size: 2rem;
+    }
+}

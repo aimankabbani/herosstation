@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('head')
 <style>
@@ -81,7 +81,7 @@
             @csrf
 
             {{-- Hidden Hall ID --}}
-            <input name="hall_id" value="1" type="hidden" />
+            <input name="hall_id" value="{{$hallId}}" type="hidden" />
 
             <div class="mb-3">
                 <label for="phone" class="form-label fw-semibold">Phone Number</label>
@@ -123,23 +123,4 @@
     </div>
 
 </div>
-@endsection
-
-@section('scripts')
-<script>
-    $(document).ready(function() {
-        $('#country_code').select2({
-            templateResult: formatFlags,
-            templateSelection: formatFlags,
-            width: 'resolve'
-        });
-    });
-
-    function formatFlags(state) {
-        if (!state.id) {
-            return state.text;
-        }
-        return state.text;
-    }
-</script>
 @endsection
