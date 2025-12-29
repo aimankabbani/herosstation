@@ -16,10 +16,15 @@ class ResolveSite
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $slug = $request->segment(1); // first URL segment
-        
+        if (!$request->routeIs('site.page')) {
+            return $next($request);
+        }
+
+        $slug = $request->segment(1);
+
         $site = Site::where('slug', $slug)->first();
-        if (!$site) abort(404);
+        abort_if(!$site, 404);
+
         view()->share('site', $site);
 
         return $next($request);
