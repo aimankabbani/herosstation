@@ -7,19 +7,19 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function show($siteSlug, $pageSlug = null)
+    public function show($slug, $page = null)
     {
         // Find the site
-        $site = Site::where('slug', $siteSlug)->firstOrFail();
+        $site = Site::where('slug', $slug)->firstOrFail();
 
         // Find the page
-        if ($pageSlug) {
-            $page = $site->pages()->where('slug', $pageSlug)->first();
+        if ($page) {
+            $page = $site->pages()->where('slug', $page)->first();
             if (!$page) {
                 abort(404); // page slug does not exist
             }
         } else {
-            // No pageSlug provided → fallback to first page
+            // No page provided → fallback to first page
             $page = $site->pages()->first();
             if (!$page) {
                 abort(404); // site has no pages at all
