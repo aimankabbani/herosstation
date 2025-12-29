@@ -11,7 +11,6 @@ class PageController extends Controller
     {
         // Find the site
         $site = Site::where('slug', $slug)->firstOrFail();
-        dd($slug, $site);
         // Find the page
         if ($page) {
             $page = $site->pages()->where('slug', $page)->first();
