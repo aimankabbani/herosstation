@@ -21,7 +21,7 @@ class ResolveSite
         }
 
         $slug = $request->segment(1);
-
+        dd($slug);
         $site = Site::where('slug', $slug)->first();
         abort_if(!$site, 404);
 
