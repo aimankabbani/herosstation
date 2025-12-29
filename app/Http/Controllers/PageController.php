@@ -11,7 +11,7 @@ class PageController extends Controller
     {
         // Find the site
         $site = Site::where('slug', $slug)->firstOrFail();
-
+        dd($slug, $site);
         // Find the page
         if ($page) {
             $page = $site->pages()->where('slug', $page)->first();
@@ -25,7 +25,7 @@ class PageController extends Controller
                 abort(404); // site has no pages at all
             }
         }
-        
+
         return view('home', compact('site', 'page'));
     }
 }
