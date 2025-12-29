@@ -21,8 +21,9 @@ class ResolveSite
         }
 
         $slug = $request->segment(1);
-        dd($slug);
+        
         $site = Site::where('slug', $slug)->first();
+        dd($site);
         abort_if(!$site, 404);
 
         view()->share('site', $site);
