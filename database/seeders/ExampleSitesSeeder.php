@@ -21,7 +21,8 @@ class ExampleSitesSeeder extends Seeder
                     'path_prefix' => "/site-{$i}",
                     'hero_title_en' => "Welcome to Site {$i}",
                     'hero_title_ar' => "مرحباً بكم في موقع {$i}",
-                    'slogan' => "Your go-to platform for everything Site {$i}",
+                    'slogan_en' => "Your go-to platform for everything Site {$i}",
+                    'slogan_ar' => "Your go-to platform for everything Site {$i}",
                     'hero_image_url' => "https://picsum.photos/1200/500?random={$i}", // Added hero image
                     'branding' => [
                         'primary_color' => '#0b74de',

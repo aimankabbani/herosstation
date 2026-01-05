@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('site_id')->constrained()->cascadeOnDelete();
             $table->string('title');
             $table->string('slug');
-            $table->text('content')->nullable();
+            $table->longText('content')->nullable();
             $table->boolean('is_published')->default(true);
             $table->integer('order')->default(0);
             $table->timestamps();

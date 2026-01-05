@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Countries;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,6 +16,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             MediaSeeder::class,
+            CountriesTableSeeder::class,
+            DefaultMenuSeeder::class,
+            ExampleSitesSeeder::class,
+            HallsSeeder::class,
+            PagesSeeder::class,
+            StaticSiteSeeder::class,
         ]);
     }
 }

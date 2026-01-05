@@ -17,8 +17,8 @@ return new class extends Migration
         });
 
         Schema::table('pages', function (Blueprint $table) {
-            $table->string('title_ar')->after('title_en')->nullable();
-            $table->string('content_ar')->after('content_en')->nullable();
+            $table->longText('title_ar')->after('title_en')->nullable();
+            $table->longText('content_ar')->after('content_en')->nullable();
         });
     }
 
