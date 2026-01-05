@@ -4,9 +4,10 @@
 
 @section('content')
 
-<x-hero :title="$site->name" :phoneNumber="$site->phone_number" :slogan="$site->slogan"/>
-<x-about />
+<x-hero :site="$site" />
+<x-about :about="$page['about-us']"/>
 <x-services />
-<x-portfolio :gallery="$site->media"/>
+<x-portfolio :gallery="$site->media" />
 <x-contact />
+
 @endsection

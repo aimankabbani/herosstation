@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="@yield('htmlClass')">
+
 <head>
     <meta charset="UTF-8">
     <title>@yield('title', 'Devis Portfolio')</title>
@@ -13,31 +14,46 @@
     {{-- Main CSS --}}
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
+
+
     @stack('styles')
 </head>
 
-<body class="@yield('bodyClass')">
+<body class="dark">
 
     {{-- Navbar --}}
     @include('partials.navbar')
 
     {{-- Page Content --}}
-    <main>
+    <main class="container">
         @yield('content')
     </main>
 
     {{-- Footer --}}
     @include('partials.footer')
 
-    {{-- JS (optional, clean) --}}
+
     <script>
-        // 🌙 Dark mode toggle (ready for DB/session later)
-        function toggleTheme() {
-            document.body.classList.toggle('dark')
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.scroll-up');
+            console.log(elements);
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            }); // 10% visible to trigger
+
+            elements.forEach(el => observer.observe(el));
+        });
     </script>
+
 
     @stack('scripts')
 
 </body>
+
 </html>

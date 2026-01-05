@@ -8,7 +8,7 @@
         <div class="row g-4">
             @foreach($sites as $site)
             <div class="col-md-4">
-                <a href="{{ url($site->slug) }}" class="text-decoration-none">
+                <a href="{{ url(app()->getLocale() . '/' . $site->slug) }}" class="text-decoration-none">
                     <div class="card site-card shadow-sm h-100">
                         <img src="{{ 
     !empty($site->branding['banner_path']) 

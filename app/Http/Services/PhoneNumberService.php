@@ -8,35 +8,49 @@ use Carbon\Carbon;
 class PhoneNumberService
 {
 
-    public function create($data): PhoneNumbers
+    public function create(array $data): PhoneNumbers
     {
-        $phone = $data["phone"];
-        $countryCode = $data["country_code"] ?? '+963';
+        $countryCode = $data['country_code'] ?? '+963';
+        $phone = preg_replace('/\D/', '', $data['phone']);
 
-        // Remove country code if the phone starts with it
-        if (str_starts_with($phone, $countryCode)) {
-            $phone = substr($phone, strlen($countryCode));
+        if (str_starts_with($phone, ltrim($countryCode, '+'))) {
+            $phone = substr($phone, strlen(ltrim($countryCode, '+')));
         }
 
-        // Remove any non-numeric characters (optional, to clean spaces or dashes)
-        $phone = preg_replace('/\D/', '', $phone);
-
-        // Now $phone contains only the local number
-        // Save full number optionally
         $fullNumber = $countryCode . $phone;
 
-        return PhoneNumbers::updateOrCreate(
-            [
-                // Conditions to check for duplicates
-                'phone' => $fullNumber,
-                'hall_id' => $data['hall_id']
-            ],
-            [
-                // Fields to update if it already exists
-                'phone' => $fullNumber,
-                'hall_id' => $data['hall_id']
-            ]
-        );
+        $alreadyAddedToday = PhoneNumbers::where('phone', $fullNumber)
+            ->where('hall_id', $data['hall_id'])
+            ->whereDate('created_at', Carbon::today())
+            ->exists();
+
+        if ($alreadyAddedToday) {
+            throw new \Exception(__('phone.already_added_today'));
+        }
+
+        $record = PhoneNumbers::where('phone', $fullNumber)
+            ->where('hall_id', $data['hall_id'])
+            ->first();
+
+        if ($record) {
+            $record->update([
+                'name' => $data['name'],
+                'gender' => $data['gender'],
+                'date_of_birth' => $data['dob'],
+                'occurrence_count' => $record->occurrence_count + 1,
+            ]);
+
+            return $record;
+        }
+
+        return PhoneNumbers::create([
+            'phone' => $fullNumber,
+            'hall_id' => $data['hall_id'],
+            'name' => $data['name'],
+            'gender' => $data['gender'],
+            'date_of_birth' => $data['dob'],
+            'occurrence_count' => 1,
+        ]);
     }
 
     public function loadReportData($filter, $page = 1, $count = 10)

@@ -1,4 +1,4 @@
-<section class="services">
+<section class="services scroll-up delay-3">
     <div class="container">
         <h2>Services</h2>
 

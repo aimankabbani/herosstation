@@ -1,8 +1,8 @@
-<section class="about">
+<section class="about scroll-up delay-2">
     <div class="container narrow">
-        <h2>About Me</h2>
+        <h2>{{$about->title}}</h2>
         <p>
-            I build high-quality, fast and scalable web experiences using modern technologies.
+            {!!$about->content!!}
         </p>
     </div>
 </section>

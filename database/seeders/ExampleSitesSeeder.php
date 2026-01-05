@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Site;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ExampleSitesSeeder extends Seeder
@@ -17,14 +16,22 @@ class ExampleSitesSeeder extends Seeder
             Site::firstOrCreate(
                 ['slug' => "site-{$i}"],
                 [
-                    'name' => "Site {$i}",
+                    'name_en' => "Site {$i}",
+                    'name_ar' => "موقع {$i}",
                     'path_prefix' => "/site-{$i}",
+                    'hero_title_en' => "Welcome to Site {$i}",
+                    'hero_title_ar' => "مرحباً بكم في موقع {$i}",
+                    'slogan' => "Your go-to platform for everything Site {$i}",
+                    'hero_image_url' => "https://picsum.photos/1200/500?random={$i}", // Added hero image
                     'branding' => [
                         'primary_color' => '#0b74de',
-                        'logo' => null,
-                        'favicon' => null,
+                        'logo_path' => null,
+                        'favicon_path' => null,
                         'custom_css' => ''
-                    ]
+                    ],
+                    'settings' => [
+                        'phone_number' => null,
+                    ],
                 ]
             );
         }

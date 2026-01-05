@@ -31,13 +31,14 @@ class UltraMsgService
         return $response->json();
     }
 
-    public function sendBulk(array $numbers, $message)
+    public function sendBulk($numbers, $message)
     {
         $results = [];
+        $uniqueNumbers = $numbers->pluck('phone')->unique();
 
-        foreach ($numbers as $number) {
-            $results[$number] = $this->sendMessage($number, $message);
-            usleep(200000); // optional delay to prevent hitting API limits (0.2 sec)
+        foreach ($uniqueNumbers as $phone) {
+            $results[$phone] = $this->sendMessage($phone, $message);
+            usleep(200000);
         }
 
         return $results;

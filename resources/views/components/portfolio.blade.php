@@ -1,4 +1,4 @@
-<section class="portfolio">
+<section class="portfolio scroll-up delay-4">
     <div class="container">
         <h2>Portfolio</h2>
 

@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
 @section('head')
+
+
 <style>
     /* Match Select2 height with Bootstrap input */
     .select2-container--default .select2-selection--single {
@@ -45,6 +47,7 @@
         width: 120px !important;
     }
 </style>
+
 @endsection
 @section('content')
 
@@ -57,12 +60,12 @@
             <img src="/images/herosstaion_logo.png" alt="Logo" style="width: 100px;">
         </div>
 
-        <h2 class="text-center mb-4">Add Phone Number</h2>
+        <h2 class="text-center mb-4">{{ __('translate.title') }}</h2>
 
         {{-- Success Message --}}
         @if(session('success'))
         <div class="alert alert-success text-center">
-            {{ session('success') }}
+            {{ __('translate.success') }}
         </div>
         @endif
 
@@ -77,14 +80,69 @@
         </div>
         @endif
 
-        <form action="{{ route('phone.store') }}" method="POST">
+        <form action="{{ route('phone.store', ['locale' => app()->getLocale()]) }}" method="POST">
             @csrf
 
             {{-- Hidden Hall ID --}}
             <input name="hall_id" value="{{$hallId}}" type="hidden" />
 
+            {{-- Full Name --}}
             <div class="mb-3">
-                <label for="phone" class="form-label fw-semibold">Phone Number</label>
+                <label for="name" class="form-label fw-semibold"> {{ __('translate.full_name') }}</label>
+                <input type="text"
+                    name="name"
+                    id="name"
+                    class="form-control shadow-sm"
+                    placeholder="{{ __('translate.full_name') }}"
+                    value="{{ old('name') }}"
+                    required>
+            </div>
+
+            {{-- Date of Birth --}}
+            <div class="mb-3">
+                <label for="dob" class="form-label fw-semibold"> {{ __('translate.date_of_birth') }}</label>
+                <input type="date"
+                    name="dob"
+                    id="dob"
+                    class="form-control shadow-sm"
+                    value="{{ old('dob') }}"
+                    required>
+            </div>
+
+            {{-- Gender --}}
+            <div class="mb-3">
+                <label class="form-label fw-semibold d-block"> {{ __('translate.gender') }}</label>
+
+                <div class="d-flex gap-3">
+                    <div class="form-check">
+                        <input class="form-check-input"
+                            type="radio"
+                            name="gender"
+                            id="male"
+                            value="male"
+                            {{ old('gender') === 'male' ? 'checked' : '' }}
+                            required>
+                        <label class="form-check-label" for="male">
+                            {{ __('translate.male') }}
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input"
+                            type="radio"
+                            name="gender"
+                            id="female"
+                            value="female"
+                            {{ old('gender') === 'female' ? 'checked' : '' }}>
+                        <label class="form-check-label" for="female">
+                            {{ __('translate.female') }}
+
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label fw-semibold"> {{ __('translate.phone_number') }}</label>
 
                 <div class="input-group shadow-sm rounded-3">
 
@@ -118,7 +176,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-warning w-100">Save</button>
+            <button type="submit" class="btn btn-warning w-100"> {{ __('translate.save') }} </button>
         </form>
     </div>
 

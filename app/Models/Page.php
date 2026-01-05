@@ -11,9 +11,11 @@ class Page extends Model
 
     protected $fillable = [
         'site_id',
-        'title',
+        'title_en',
+        'title_ar',
         'slug',
-        'content',
+        'content_en',
+        'content_ar',
         'is_published',
         'order'
     ];

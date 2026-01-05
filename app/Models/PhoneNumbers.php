@@ -9,8 +9,14 @@ class PhoneNumbers extends Model
 {
     protected $table = 'phone_numbers';
 
-    protected $fillable = ['phone', 'hall_id'];
-
+    protected $fillable = [
+        'phone',
+        'hall_id',
+        'name',
+        'gender',
+        'date_of_birth',
+        'occurrence_count'
+    ];
 
     protected $casts = [
         'created_at' => 'datetime:Y-d-m H:i',

@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Site;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\App;
 
-class ResolveSite
+class SetLocale
 {
     /**
      * Handle an incoming request.
@@ -16,16 +16,13 @@ class ResolveSite
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!$request->routeIs('site.page')) {
-            return $next($request);
+        $locale = $request->route('locale');
+
+        if (! in_array($locale, ['ar', 'en'])) {
+            $locale = 'ar'; // default
         }
 
-        $slug = $request->segment(2);
-        
-        $site = Site::where('slug', $slug)->first();
-        abort_if(!$site, 404);
-
-        view()->share('site', $site);
+        App::setLocale($locale);
 
         return $next($request);
     }

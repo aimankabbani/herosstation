@@ -33,16 +33,20 @@ class PhoneNumberController extends Controller
 
     public function create(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'phone' => 'required|digits:9',
             'country_code' => 'required|string|max:4',
-            'hall_id' => 'required|integer'
+            'hall_id' => 'required|integer',
+            'name' => 'required|string|max:255',
+            'gender' => 'required|in:male,female',
+            'dob' => 'required|date',
         ]);
+
         $data = $request->all();
         $phoneNumber =  $this->phoneNumberService->create($data);
 
         if ($phoneNumber) {
-            return back()->with('success', 'Phone number saved successfully!');
+            return back()->with('success', __('translate.success'));
         } else {
             return back()->with('error', 'Failed to save phone number. Please try again.');
         }

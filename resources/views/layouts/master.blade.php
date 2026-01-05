@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" x-data="{ sidebarOpen: false }">
+<html lang="{{ app()->getLocale() }}"
+      dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
 
 <head>
     <meta charset="utf-8">

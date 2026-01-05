@@ -12,7 +12,8 @@ class Site extends Model
 
 
     protected $fillable = [
-        'name',
+        'name_en',
+        'name_ar',
         'slug',
         'domain',
         'path_prefix',
@@ -22,7 +23,9 @@ class Site extends Model
         'settings',
         'hero_title_en',
         'hero_title_ar',
-        'slogan',
+        'slogan_en',
+        'slogan_ar',
+        'hero_image_url'
     ];
 
     protected $casts = [
