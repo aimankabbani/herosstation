@@ -23,8 +23,8 @@
                 <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                     <img
                         src="{{ 
-    !empty($slide->branding['banner_path']) 
-        ? asset('storage/'.$slide->branding['banner_path']) 
+    !empty($slide->hero_image_url) 
+        ? asset('storage/'.$slide->hero_image_url) 
         : 'https://picsum.photos/600/400?random=' . $slide->id 
 }}"
                         class="d-block w-100 hero-image"

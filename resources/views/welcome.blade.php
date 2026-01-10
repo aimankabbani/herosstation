@@ -11,8 +11,8 @@
                 <a href="{{ url(app()->getLocale() . '/' . $site->slug) }}" class="text-decoration-none">
                     <div class="card site-card shadow-sm h-100">
                         <img src="{{ 
-    !empty($site->branding['banner_path']) 
-        ? asset('storage/'.$site->branding['banner_path']) 
+    !empty($site->hero_image_url) 
+        ? asset('storage/'.$site->hero_image_url) 
         : 'https://picsum.photos/600/400?random=' . $site->id 
 }}"
                             alt="{{ $site->name }}" class="banner">
