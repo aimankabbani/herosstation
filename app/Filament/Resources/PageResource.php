@@ -3,14 +3,18 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PageResource\Pages;
+use App\Filament\Resources\SiteResource\RelationManagers\ServicesRelationManager;
 use App\Models\Page;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Tables\Filters\SelectFilter;
-
+use Filament\Tables\Filters\TernaryFilter;
 
 class PageResource extends Resource
 {
@@ -29,6 +33,18 @@ class PageResource extends Resource
                     ->label('Site')
                     ->relationship('site', 'name_en')
                     ->searchable()
+                    ->required(),
+
+                Select::make('type')
+                    ->label('Type')
+                    ->options([
+                        'home' => 'Home',
+                        'about-us' => 'About Us',
+                        'contact-us' => 'Contact Us',
+                        'footer' => 'Footer',
+                        'gallery' => 'Gallery',
+                        'service' => 'Service',
+                    ])
                     ->required(),
 
                 Forms\Components\TextInput::make('title_en')
@@ -62,6 +78,9 @@ class PageResource extends Resource
                     ->numeric()
                     ->default(0)
                     ->label('Order'),
+
+                Forms\Components\Hidden::make('type')->default('service'),
+
             ]);
     }
 
@@ -69,25 +88,38 @@ class PageResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('site.name_en')
+                TextColumn::make('site.name_en')
                     ->label('Site')
                     ->sortable()
                     ->searchable(),
 
-                Tables\Columns\TextColumn::make('title_en')
+                TextColumn::make('title_en')
                     ->label('Title (EN)')
                     ->sortable()
                     ->searchable(),
 
-                Tables\Columns\TextColumn::make('slug')
+                TextColumn::make('slug')
                     ->sortable()
                     ->searchable(),
 
-                Tables\Columns\IconColumn::make('is_published')
+                TextColumn::make('type')
+                    ->label('Type')
+                    ->sortable()
+                    ->formatStateUsing(fn($state) => match ($state) {
+                        'home' => 'Home',
+                        'about-us' => 'About Us',
+                        'contact-us' => 'Contact Us',
+                        'footer' => 'Footer',
+                        'gallery' => 'Gallery',
+                        'service' => 'Service',
+                        default => $state,
+                    }),
+
+                IconColumn::make('is_published')
                     ->label('Published')
                     ->boolean(),
 
-                Tables\Columns\TextColumn::make('order')
+                TextColumn::make('order')
                     ->sortable(),
             ])
             ->defaultSort('order')
@@ -98,7 +130,19 @@ class PageResource extends Resource
                     ->searchable()
                     ->preload(),
 
-                Tables\Filters\TernaryFilter::make('is_published')
+                SelectFilter::make('type')
+                    ->label('Type')
+                    ->options([
+                        'home' => 'Home',
+                        'about-us' => 'About Us',
+                        'contact-us' => 'Contact Us',
+                        'footer' => 'Footer',
+                        'gallery' => 'Gallery',
+                        'service' => 'Service',
+                    ])
+                    ->searchable(),
+
+                TernaryFilter::make('is_published')
                     ->label('Published'),
             ])
             ->actions([
@@ -113,7 +157,7 @@ class PageResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            // ServicesRelationManager::class,
         ];
     }
 

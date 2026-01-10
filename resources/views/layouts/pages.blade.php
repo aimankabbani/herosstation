@@ -202,7 +202,7 @@
     <!-- About Section -->
     <section id="about" class="bg-light">
         <div class="container">
-            <h2>About Us</h2>
+            <h2>{{__('translate.about_us')}}</h2>
             {!! $site->pages()->where('slug','about')->first()?->content !!}
         </div>
     </section>

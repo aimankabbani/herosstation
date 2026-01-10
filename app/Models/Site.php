@@ -66,4 +66,11 @@ class Site extends Model
     {
         return $this->settings['phone_number'] ?? null;
     }
+
+    public function services()
+    {
+        return $this->hasMany(Page::class)
+            ->where('type', 'service') // Only pages where type = 'service'
+            ->orderBy('order');       // Optional: order by `order` column
+    }
 }

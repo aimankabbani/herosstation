@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="@yield('htmlClass')">
+<html lang="{{ app()->getLocale() }}" dir="{{ in_array(app()->getLocale(), ['ar','he','fa']) ? 'rtl' : 'ltr' }}" class="@yield('htmlClass')">
 
 <head>
     <meta charset="UTF-8">

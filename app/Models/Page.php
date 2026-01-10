@@ -17,7 +17,8 @@ class Page extends Model
         'content_en',
         'content_ar',
         'is_published',
-        'order'
+        'order',
+        'type'
     ];
 
     public function site()

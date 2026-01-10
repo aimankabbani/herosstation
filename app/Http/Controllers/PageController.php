@@ -22,7 +22,7 @@ class PageController extends Controller
                 'branding',
                 'settings',
                 "hero_title_{$locale} as hero_title",
-                "slogan_{$locale}",
+                "slogan_{$locale} as slogan",
                 "hero_image_url"
             )
             ->with('media')->firstOrFail();
@@ -53,7 +53,7 @@ class PageController extends Controller
                 abort(404);
             }
         }
-
+        
         return view('home', compact('site', 'page'));
     }
 }

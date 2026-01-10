@@ -3,15 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\MediaResource\Pages;
-use App\Filament\Resources\MediaResource\RelationManagers;
 use App\Models\Media;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\FileUpload;
+
 
 class MediaResource extends Resource
 {
@@ -40,19 +39,24 @@ class MediaResource extends Resource
                     ->required()
                     ->reactive(),
 
-                Forms\Components\FileUpload::make('file_path')
+                FileUpload::make('file_path')
                     ->label('File')
                     ->disk('public')
                     ->directory('media')
+                    ->visibility('public')
                     ->required()
                     ->acceptedFileTypes(
                         fn(callable $get) =>
                         $get('type') === 'video'
                             ? ['video/mp4', 'video/webm', 'video/ogg']
-                            : ['image/*']
+                            : ['image/jpeg', 'image/png', 'image/webp']
                     )
-                    ->image(fn(callable $get) => $get('type') === 'image')
-                    ->imagePreviewHeight(120),
+                    ->previewable()
+                    ->openable()
+                    ->maxSize(
+                        fn(callable $get) =>
+                        $get('type') === 'video' ? 51200 : 5120 // 50MB video, 5MB image
+                    ),
 
                 Forms\Components\TextInput::make('alt')
                     ->label('Alt Text')
