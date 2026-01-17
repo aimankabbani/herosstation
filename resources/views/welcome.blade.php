@@ -22,8 +22,7 @@
         ? asset('storage/'.$site->branding['logo_path']) 
         : 'https://img.icons8.com/color/96/000000/company.png?text=' . urlencode($site->name) 
 }}" alt="{{ $site->name }}" style="height:50px; margin-bottom:10px;">
-                            <h5>{{ $site->name }}</h5>
-                            <p>{{ $site->pages()->where('slug','about')->first()?->excerpt ?? 'Visit this site to learn more.' }}</p>
+                            <h5>{{ $site->{'name_' . app()->getLocale()} }}</h5>
                             <button class="btn btn-primary btn-visit" style="background-color: {{ $site->branding['primary_color'] ?? '#2c3e50' }}; border:none;">Visit Site</button>
                         </div>
                     </div>
