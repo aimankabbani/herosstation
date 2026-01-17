@@ -14,6 +14,7 @@ return [
     'already_added_today' => 'This phone number has already been added today for this hall.',
     'portfolio' => 'Portfolio',
     'about_us' => 'About Us',
-    'services' => "Our Services"
+    'services' => "Our Services",
+    'contact_us' => 'Contact Us'
 
 ];

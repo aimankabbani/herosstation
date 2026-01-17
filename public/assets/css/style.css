@@ -160,7 +160,7 @@ a {
    SECTION BASE
 ======================= */
 section {
-    padding: 140px 0;
+    padding: 50px 0;
 }
 
 .narrow {
@@ -351,8 +351,8 @@ section {
 }
 
 .footer-social a img {
-    width: 24px;
-    height: 24px;
+    width: 42px;
+    height: 42px;
     filter: brightness(0.3);
     transition: filter var(--transition);
 }
