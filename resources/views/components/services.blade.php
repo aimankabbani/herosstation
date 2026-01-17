@@ -1,6 +1,6 @@
 <section class="services scroll-up delay-3">
     <div class="container">
-        <h2>Services</h2>
+        <h2>{{__('translate.services')}}</h2>
 
         <div class="grid">
             @foreach ($services as $service)

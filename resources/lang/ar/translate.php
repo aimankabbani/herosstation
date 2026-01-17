@@ -14,6 +14,7 @@ return [
     'already_added_today' => 'تم تسجيل هذا الرقم اليوم بالفعل في هذه الصالة.',
     'portfolio' => 'أعمالنا',
     'about_us' => 'من نحن',
+    'services' => 'خدماتنا'
 
 
 ];
