@@ -23,6 +23,7 @@
         : 'https://img.icons8.com/color/96/000000/company.png?text=' . urlencode($site->name) 
 }}" alt="{{ $site->name }}" style="height:50px; margin-bottom:10px;">
                             <h5>{{ $site->{'name_' . app()->getLocale()} }}</h5>
+                            <p>{{ $site->{'slogan_' . app()->getLocale()} ?? 'Visit this site to learn more.' }}</p>
                             <button class="btn btn-primary btn-visit" style="background-color: {{ $site->branding['primary_color'] ?? '#2c3e50' }}; border:none;">Visit Site</button>
                         </div>
                     </div>
