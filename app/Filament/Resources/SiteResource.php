@@ -100,7 +100,8 @@ class SiteResource extends Resource
                                     ->disk('public')
                                     ->image()
                                     ->directory('hero')
-                                    ->label('Hero Image'),
+                                    ->label('Hero Image')
+                                    ->maxSize(3072),
                             ]),
 
                         /* ======================
