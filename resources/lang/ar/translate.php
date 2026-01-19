@@ -15,7 +15,8 @@ return [
     'portfolio' => 'أعمالنا',
     'about_us' => 'من نحن',
     'services' => 'خدماتنا',
-    'contact_us' => 'اتصل بنا'
+    'contact_us' => 'اتصل بنا',
+    'visit_site' => 'زيارة الموقع'
 
 
 ];

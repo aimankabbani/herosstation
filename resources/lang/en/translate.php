@@ -15,6 +15,7 @@ return [
     'portfolio' => 'Portfolio',
     'about_us' => 'About Us',
     'services' => "Our Services",
-    'contact_us' => 'Contact Us'
+    'contact_us' => 'Contact Us',
+    'visit_site' => "Visit Site"
 
 ];

@@ -24,7 +24,7 @@
 }}" alt="{{ $site->name }}" style="height:50px; margin-bottom:10px;">
                             <h5>{{ $site->{'name_' . app()->getLocale()} }}</h5>
                             <p>{{ $site->{'slogan_' . app()->getLocale()} ?? 'Visit this site to learn more.' }}</p>
-                            <button class="btn btn-primary btn-visit" style="background-color: {{ $site->branding['primary_color'] ?? '#2c3e50' }}; border:none;">Visit Site</button>
+                            <button class="btn btn-primary btn-visit" style="background-color: {{ $site->branding['primary_color'] ?? '#2c3e50' }}; border:none;">{{__('translate.visit_site')}}</button>
                         </div>
                     </div>
                 </a>
