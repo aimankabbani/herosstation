@@ -74,8 +74,8 @@
                             alt="{{ $site->name }}" class="banner">
                         <div class="card-body text-center">
                             <img src="{{ 
-    !empty($site->branding['logo_path']) 
-        ? asset('storage/'.$site->branding['logo_path']) 
+    !empty($site->logo_path) 
+        ? asset('storage/'.$site->logo_path) 
         : 'https://img.icons8.com/color/96/000000/company.png?text=' . urlencode($site->name) 
 }}" alt="{{ $site->name }}" style="height:50px; margin-bottom:10px;">
                             <h5>{{ $site->{'name_' . app()->getLocale()} }}</h5>
