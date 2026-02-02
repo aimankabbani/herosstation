@@ -152,45 +152,6 @@
 
 <body>
 
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark py-3">
-            <div class="container">
-                <a class="navbar-brand" href="#home">
-                    @if(!empty($site->branding['logo_path']))
-                    <img src="{{ 
-    !empty($site->branding['banner_path']) 
-        ? asset('storage/'.$site->branding['banner_path']) 
-        : 'https://picsum.photos/600/400?random=' . $site->id 
-}}" alt="{{ $site->name }}" height="50">
-                    @else
-                    {{ $site->name }}
-                    @endif
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        @php
-                        $menu = $site->menus()->where('name','main')->first();
-                        @endphp
-                        @if($menu)
-                        @foreach($menu->items as $item)
-                        @php
-                        $href = $item->page ? '#'.$item->page->slug : $item->url;
-                        @endphp
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ $href }}">{{ $item->title }}</a>
-                        </li>
-                        @endforeach
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-
     <!-- Hero Section -->
     <section id="home" class="hero" style="background-image: url('{{ 
     !empty($site->branding['banner_path']) 

@@ -6,7 +6,7 @@
     --primary: #ff4a17;
     --secondary: #1a1a1a;
 
-    --bg: #ffffff;
+    --bg: rgb(7 14 30);;
     --bg-soft: #f9f9f9;
 
     --text: #111111;
@@ -16,6 +16,10 @@
     --border: #eaeaea;
 
     --transition: 0.3s ease-in-out;
+
+    --text-yellow: #fec544;
+
+    --bg-footer:#0a101e;
 }
 body[dir="rtl"] {
     direction: rtl;
@@ -28,12 +32,12 @@ body[dir="ltr"] {
 }
 /* DARK MODE */
 .dark {
-    --bg: #0c0c0c;
-    --bg-soft: #121212;
+    background: var(--bg)
+    /* --bg-soft: #121212;
     --text: #ffffff;
     --text-muted: #aaaaaa;
     --card-bg: #161616;
-    --border: #222;
+    --border: #222; */
 }
 
 /* =======================
@@ -46,11 +50,14 @@ body[dir="ltr"] {
 }
 
 body {
-    font-family: "Inter", sans-serif;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
-    transition: background var(--transition), color var(--transition);
+    transition:
+        background var(--transition),
+        color var(--transition);
 }
 
 a {
@@ -79,7 +86,6 @@ a {
     top: 0;
     background: var(--bg);
     z-index: 100;
-    border-bottom: 1px solid var(--border);
 }
 
 .logo {
@@ -188,12 +194,12 @@ section {
 }
 
 .card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    padding: 48px 42px;
-    border-radius: 20px;
-    transition: all var(--transition);
     text-align: center;
+    padding: 50px 30px;
+    border-radius: 3px;
+    transition: all 0.4s ease;
+    border: 1px solid #232935;
+    background-color: #101624;
 }
 
 .card h3 {
@@ -264,16 +270,6 @@ section {
 }
 
 /* =======================
-   FOOTER
-======================= */
-.footer {
-    text-align: center;
-    padding: 50px 0;
-    background: var(--bg-soft);
-    color: var(--text-muted);
-}
-
-/* =======================
    RESPONSIVE
 ======================= */
 @media (max-width: 1024px) {
@@ -307,10 +303,12 @@ section {
    FOOTER STYLES
 ======================= */
 .footer {
-    background: var(--bg-soft);
+    background: var(--bg-footer);
     color: var(--text-muted);
     padding: 60px 0 40px;
-    transition: background var(--transition), color var(--transition);
+    transition:
+        background var(--transition),
+        color var(--transition);
 }
 
 .footer-container {
@@ -386,7 +384,9 @@ section {
 .scroll-up {
     transform: translateY(50px);
     opacity: 0;
-    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+    transition:
+        transform 0.8s ease-out,
+        opacity 0.8s ease-out;
 }
 
 /* When element enters viewport */
@@ -403,4 +403,8 @@ section {
 }
 .scroll-up.delay-3 {
     transition-delay: 0.6s;
+}
+
+.text-yellow {
+    color: var(--text-yellow);
 }

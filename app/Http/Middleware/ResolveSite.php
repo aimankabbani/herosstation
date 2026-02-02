@@ -16,12 +16,12 @@ class ResolveSite
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!$request->routeIs('site.page')) {
+        if (!$request->routeIs('site.page')) {    
             return $next($request);
         }
 
         $slug = $request->segment(2);
-        
+
         $site = Site::where('slug', $slug)->first();
         abort_if(!$site, 404);
 

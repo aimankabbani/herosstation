@@ -12,10 +12,39 @@ return [
     'save' => 'Save',
     'success' => 'Phone number added successfully',
     'already_added_today' => 'This phone number has already been added today for this hall.',
-    'portfolio' => 'Portfolio',
+    'portfolio' => 'Gallery',
     'about_us' => 'About Us',
     'services' => "Our Services",
     'contact_us' => 'Contact Us',
-    'visit_site' => "Visit Site"
+    'visit_site' => "Visit Site",
+    /* =========================
+     |  Contact Section
+     |========================= */
 
+    'contact_us' => 'Contact Us',
+    'contact_description' => 'We’re here to help and answer any question you might have. Reach out to us anytime and our team will get back to you as soon as possible.',
+
+    'contact_us_title' => 'Get in touch with us',
+    'contact_us_subtitle' => 'We are here to help you anytime',
+
+    /* Form */
+    'contact_form_title' => 'Just say Hello',
+    'your_name' => 'Your Name',
+    'your_email' => 'Your Email',
+    'your_subject' => 'Your Subject',
+    'your_message' => 'Your Message',
+    'send_message' => 'Send Message',
+
+    /* Info */
+    'contact_info' => 'Contact Info',
+    'email' => 'Email',
+    'phone' => 'Phone',
+    'address' => 'Address',
+    'visit_social' => 'Visit my social profile and get connected',
+
+    /* Services */
+    'services' => 'Services',
+
+    /* General */
+    'hello' => 'Hello',
 ];

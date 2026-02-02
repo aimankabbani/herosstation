@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+        sans-serif;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background-color: rgb(7 16 29 / 36%); /* slightly white */
+    padding: 0 60px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #d4a84b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: #d4a84b;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 21px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+.nav-links a.active {
+    color: #d4a84b;
+}
+
+.nav-links a:not(.active) {
+    color: #9ca3af;
+}
+
+.nav-links a:hover {
+    color: #d4a84b;
+}
+
+.divider {
+    width: 1px;
+    height: 20px;
+    background-color: #4b5563;
+}
+
+.phone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #d4a84b;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.phone:hover {
+    opacity: 0.9;
+}
+
+.phone-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .header {
+        padding: 0 30px;
+    }
+
+    .nav-links {
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .divider {
+        display: none;
+    }
+}

@@ -22,6 +22,10 @@ Route::group([
         Route::post('/bowling-station', [PhoneNumberController::class, 'create'])->name('phone.store');
     });
 
+    Route::middleware(['web'])->group(function () {
+        Route::get('/page/{slug}', [PageController::class, 'page'])->name('page.content');
+    });
+
     Route::middleware(['web', 'resolve.site'])->group(function () {
         Route::get('/{slug}/{page?}', [PageController::class, 'show'])->name('site.page');
     });

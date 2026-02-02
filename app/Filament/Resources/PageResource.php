@@ -3,18 +3,21 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PageResource\Pages;
-use App\Filament\Resources\SiteResource\RelationManagers\ServicesRelationManager;
 use App\Models\Page;
+use App\Models\Site;
 use Filament\Forms;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Toggle;
 use Filament\Tables;
-use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Table;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
+use Filament\Resources\Resource;
 
 class PageResource extends Resource
 {
@@ -27,71 +30,77 @@ class PageResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                Forms\Components\Select::make('site_id')
-                    ->label('Site')
-                    ->relationship('site', 'name_en')
-                    ->searchable()
-                    ->required(),
+        return $form->schema([
+            // Site selector (nullable = global page)
+            Select::make('site_id')
+                ->label('Site')
+                ->relationship('site', 'name_en')
+                ->searchable()
+                ->preload()
+                ->placeholder('Global page (all sites)')
+                ->helperText('Leave empty for a global page'),
 
-                Select::make('type')
-                    ->label('Type')
-                    ->options([
-                        'home' => 'Home',
-                        'about-us' => 'About Us',
-                        'contact-us' => 'Contact Us',
-                        'footer' => 'Footer',
-                        'gallery' => 'Gallery',
-                        'service' => 'Service',
-                    ])
-                    ->required(),
+            // Page type
+            Select::make('type')
+                ->label('Type')
+                ->options([
+                    'home' => 'Home',
+                    'about-us' => 'About Us',
+                    'contact-us' => 'Contact Us',
+                    'footer' => 'Footer',
+                    'gallery' => 'Gallery',
+                    'service' => 'Service',
+                ])
+                ->required(),
 
-                Forms\Components\TextInput::make('title_en')
-                    ->label('Title (EN)')
-                    ->required()
-                    ->maxLength(255),
+            // Titles
+            TextInput::make('title_en')
+                ->label('Title (EN)')
+                ->required()
+                ->maxLength(255),
 
-                Forms\Components\TextInput::make('title_ar')
-                    ->label('Title (AR)')
-                    ->required()
-                    ->maxLength(255),
+            TextInput::make('title_ar')
+                ->label('Title (AR)')
+                ->required()
+                ->maxLength(255),
 
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255)
-                    ->unique(ignoreRecord: true),
+            // Slug
+            TextInput::make('slug')
+                ->required()
+                ->maxLength(255)
+                ->unique(ignoreRecord: true),
 
-                Forms\Components\RichEditor::make('content_en')
-                    ->label('Content (EN)')
-                    ->columnSpanFull(),
+            // Content
+            RichEditor::make('content_en')
+                ->label('Content (EN)')
+                ->columnSpanFull(),
 
-                Forms\Components\RichEditor::make('content_ar')
-                    ->label('Content (AR)')
-                    ->columnSpanFull(),
+            RichEditor::make('content_ar')
+                ->label('Content (AR)')
+                ->columnSpanFull(),
 
-                Forms\Components\Toggle::make('is_published')
-                    ->label('Published')
-                    ->default(true),
+            // Published toggle
+            Toggle::make('is_published')
+                ->label('Published')
+                ->default(true),
 
-                Forms\Components\TextInput::make('order')
-                    ->numeric()
-                    ->default(0)
-                    ->label('Order'),
-
-                Forms\Components\Hidden::make('type')->default('service'),
-
-            ]);
+            // Order
+            TextInput::make('order')
+                ->numeric()
+                ->default(0)
+                ->label('Order'),
+        ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('order')
             ->columns([
                 TextColumn::make('site.name_en')
                     ->label('Site')
                     ->sortable()
-                    ->searchable(),
+                    ->formatStateUsing(fn ($state) => $state ?? 'Global'),
 
                 TextColumn::make('title_en')
                     ->label('Title (EN)')
@@ -122,11 +131,12 @@ class PageResource extends Resource
                 TextColumn::make('order')
                     ->sortable(),
             ])
-            ->defaultSort('order')
             ->filters([
                 SelectFilter::make('site_id')
                     ->label('Site')
-                    ->relationship('site', 'name_en')
+                    ->options(function () {
+                        return array_merge([null => 'Global'], Site::pluck('name_en', 'id')->toArray());
+                    })
                     ->searchable()
                     ->preload(),
 
@@ -156,9 +166,7 @@ class PageResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            // ServicesRelationManager::class,
-        ];
+        return [];
     }
 
     public static function getPages(): array
