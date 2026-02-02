@@ -10,6 +10,7 @@ use Filament\Forms\Form;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
@@ -71,13 +72,17 @@ class PageResource extends Resource
                 ->unique(ignoreRecord: true),
 
             // Content
-            RichEditor::make('content_en')
+            Textarea::make('content_en')
                 ->label('Content (EN)')
-                ->columnSpanFull(),
+                ->columnSpanFull()
+                ->extraAttributes(['class' => 'rich-editor'])
+                ->hint('You can enter HTML + inline CSS here'),
 
-            RichEditor::make('content_ar')
+            Textarea::make('content_ar')
                 ->label('Content (AR)')
-                ->columnSpanFull(),
+                ->columnSpanFull()
+                ->extraAttributes(['class' => 'rich-editor'])
+                ->hint('You can enter HTML + inline CSS here'),
 
             // Published toggle
             Toggle::make('is_published')
@@ -100,7 +105,7 @@ class PageResource extends Resource
                 TextColumn::make('site.name_en')
                     ->label('Site')
                     ->sortable()
-                    ->formatStateUsing(fn ($state) => $state ?? 'Global'),
+                    ->formatStateUsing(fn($state) => $state ?? 'Global'),
 
                 TextColumn::make('title_en')
                     ->label('Title (EN)')

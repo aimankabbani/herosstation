@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use HTMLPurifier;
+use HTMLPurifier_Config;
 
 class Page extends Model
 {
@@ -24,5 +26,21 @@ class Page extends Model
     public function site()
     {
         return $this->belongsTo(Site::class);
+    }
+
+    public function getContentEnAttribute($value)
+    {
+        $config = HTMLPurifier_Config::createDefault();
+        $purifier = new HTMLPurifier($config);
+
+        return $purifier->purify($value);
+    }
+
+    public function getContentArAttribute($value)
+    {
+        $config = HTMLPurifier_Config::createDefault();
+        $purifier = new HTMLPurifier($config);
+        
+        return $purifier->purify($value);
     }
 }

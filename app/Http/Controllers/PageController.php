@@ -11,15 +11,16 @@ class PageController extends Controller
 
     public function page(Request $request, $locale, $slug)
     {
-        
+        $slug = 'page/' . $slug;
         $page = Page::select(
             "title_{$locale} as title",
-            "content_{$locale} as content"
+            "content_{$locale} as content_{$locale}"
         )
             ->where('slug', $slug)
             ->where('is_published', true)
             ->get()
             ->first();
+        
         return view('page', compact('page'));
     }
 

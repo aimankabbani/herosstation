@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container">
-    {!!$page->content!!}
+   {!! $page->{"content_".Lang::getLocale()} !!}
 </div>
 @endsection

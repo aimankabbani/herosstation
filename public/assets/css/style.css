@@ -19,7 +19,7 @@
 
     --text-yellow: #fec544;
 
-    --bg-footer:#0a101e;
+    --bg-footer: #0a101e;
 }
 body[dir="rtl"] {
     direction: rtl;
@@ -32,7 +32,7 @@ body[dir="ltr"] {
 }
 /* DARK MODE */
 .dark {
-    background: var(--bg)
+    background: var(--bg);
     /* --bg-soft: #121212;
     --text: #ffffff;
     --text-muted: #aaaaaa;
@@ -407,4 +407,11 @@ section {
 
 .text-yellow {
     color: var(--text-yellow);
+}
+.container {
+    color: white;
+}
+
+.opacity-01 {
+    opacity: 0.1 !important;
 }

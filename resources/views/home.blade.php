@@ -41,7 +41,7 @@
     <div class="container position-relative text-center">
 
         <!-- Watermark -->
-        <div class="watermark position-absolute top-50 start-50 translate-middle text-uppercase fw-bold opacity-25"
+        <div class="watermark position-absolute top-50 start-50 translate-middle text-uppercase fw-bold opacity-01"
             style="font-size: 5rem; letter-spacing: 0.3em; pointer-events: none;">
             {{ $page['about-us']->title }}
         </div>
@@ -99,7 +99,7 @@
         <div class="title-container d-flex flex-column align-items-center justify-content-center position-relative mb-5">
 
             <!-- Watermark behind title -->
-            <div class="watermark position-absolute top-50 start-50 translate-middle text-uppercase fw-bold opacity-25"
+            <div class="watermark position-absolute top-50 start-50 translate-middle text-uppercase fw-bold opacity-01"
                 style="font-size: 5rem; letter-spacing: 0.3em; pointer-events: none;">
                 {{ __('translate.services') }}
             </div>
@@ -141,7 +141,7 @@
         <div class="title-container d-flex flex-column align-items-center justify-content-center position-relative mb-5">
 
             <!-- Watermark behind title -->
-            <div class="watermark position-absolute top-50 start-50 translate-middle text-uppercase fw-bold opacity-25"
+            <div class="watermark position-absolute top-50 start-50 translate-middle text-uppercase fw-bold opacity-01"
                 style="font-size: 5rem; letter-spacing: 0.3em; pointer-events: none;">
                 {{ __('translate.portfolio') }}
             </div>
@@ -183,7 +183,7 @@
         <div class="title-container d-flex flex-column align-items-center justify-content-center position-relative mb-5">
 
             <!-- Watermark behind title -->
-            <div class="watermark position-absolute top-50 start-50 translate-middle text-uppercase fw-bold opacity-25"
+            <div class="watermark position-absolute top-50 start-50 translate-middle text-uppercase fw-bold opacity-01"
                 style="font-size: 5rem; letter-spacing: 0.3em; pointer-events: none;">
                 {{ __('translate.contact_us') }}
             </div>
