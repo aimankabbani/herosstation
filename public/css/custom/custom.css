@@ -1,3 +1,6 @@
+:root {
+    --text-yellow: #fec544;
+}
 /* =========================
    Global Dark Mode
 ========================= */
@@ -5,7 +8,7 @@ body {
     /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
     margin: 0;
     padding: 0;
-    background-color: #000000de;
+    background-color: rgb(7 14 30);
     color: #e0e0e0;
 }
 
@@ -18,7 +21,7 @@ body {
     overflow: hidden;
 }
 
-.hero .carousel,    
+.hero .carousel,
 .hero .carousel-inner,
 .hero .carousel-item {
     height: 100%;
@@ -58,23 +61,27 @@ body {
     position: relative;
     overflow: hidden;
     border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
     background: linear-gradient(180deg, #1a1a1f, #121216);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: #e0e0e0;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .site-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
 }
 
 .site-card img.banner {
     width: 100%;
     height: 180px;
     object-fit: cover;
-    transition: transform 0.3s ease, filter 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
     filter: brightness(0.85);
 }
 
@@ -85,13 +92,13 @@ body {
 
 .site-card .card-body {
     padding: 1rem;
-    background: transparent;
+    background: #101a318f;
 }
 
 .site-card h5 {
     margin-top: 0.5rem;
     font-weight: 600;
-    color: #ffffff;
+    color: var(--text-yellow);
 }
 
 .site-card p {
@@ -122,7 +129,9 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
 }
 
 #page-loader.hidden {
@@ -152,7 +161,10 @@ body {
     opacity: 0;
     transform: translateY(40px) scale(0.95);
     filter: blur(6px);
-    transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease,
+        filter 0.6s ease;
     will-change: transform, opacity;
 }
 
@@ -171,7 +183,7 @@ footer {
     padding: 40px 0;
     text-align: center;
     margin-top: 60px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 footer small {
