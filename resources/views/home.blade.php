@@ -68,9 +68,13 @@
                 <!-- IMAGE LEFT -->
                 <div class="col-12 col-md-6 text-center text-md-start">
                     <img
-                        src="{{ !empty($site->hero_image_url) 
-                            ? asset('storage/'.$site->hero_image_url) 
-                            : 'https://picsum.photos/600/800?random='.$site->id }}"
+                        src="{{ 
+        $site->media && $site->media->count() > 0 
+            ? asset('storage/'.$site->media->random()->file_path) 
+            : (!empty($site->hero_image_url) 
+                ? asset('storage/'.$site->hero_image_url) 
+                : 'https://picsum.photos/600/800?random='.$site->id) 
+    }}"
                         alt="Edward Devis - Visual Designer"
                         class="img-fluid rounded-4 shadow-lg"
                         loading="lazy"
