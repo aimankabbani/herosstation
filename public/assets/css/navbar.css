@@ -15,7 +15,7 @@ body {
     top: 0;
     z-index: 1000;
 
-    background-color: rgb(7 16 29 / 36%); /* slightly white */
+    background-color: rgb(7 16 29 / 84%); /* slightly white */
     padding: 0 60px;
     height: 70px;
     display: flex;

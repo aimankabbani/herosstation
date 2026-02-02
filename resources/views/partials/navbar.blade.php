@@ -1,17 +1,13 @@
 <header class="header">
-    <a href="#" class="logo">
-        <div class="logo-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L13.09 8.26L19 6L14.74 10.91L21 12L14.74 13.09L19 18L13.09 15.74L12 22L10.91 15.74L5 18L9.26 13.09L3 12L9.26 10.91L5 6L10.91 8.26L12 2Z" />
-            </svg>
-        </div>
-        <span class="logo-text">Davis</span>
+    <!-- Logo -->
+    <a href="/" class="logo d-flex align-items-center pt-3">
+        <img src="{{ url(asset('assets/images/logo.png')) }}" width="200" height="100" alt="Logo">
     </a>
 
     <nav class="nav">
         <ul class="nav-links mb-0">
             @foreach($globalMenus as $menu)
-            <li><a href="{{ $menu->link }}">
+            <li><a href="{{ $menu->link }}" class="text-white">
                     {{ $menu->{'title_' . app()->getLocale()} }}
             </li>
             @endforeach
