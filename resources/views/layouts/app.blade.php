@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title', 'Devis Portfolio')</title>
+    <title>@yield('title', 'Heroes Station')</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="@yield('meta_description', 'Personal portfolio website')">

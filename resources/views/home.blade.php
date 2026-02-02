@@ -26,7 +26,7 @@
                     src="{{ !empty($site->hero_image_url) 
             ? asset('storage/'.$site->hero_image_url) 
             : 'https://picsum.photos/600/800?random='.$site->id }}"
-                    alt="Edward Devis - Visual Designer"
+                    alt="Heroes Station"
                     class="img-fluid rounded-4 shadow-lg"
                     loading="lazy"
                     decoding="async">
@@ -75,7 +75,7 @@
                 ? asset('storage/'.$site->hero_image_url) 
                 : 'https://picsum.photos/600/800?random='.$site->id) 
     }}"
-                        alt="Edward Devis - Visual Designer"
+                        alt="Heroes Station"
                         class="img-fluid rounded-4 shadow-lg"
                         loading="lazy"
                         decoding="async">
