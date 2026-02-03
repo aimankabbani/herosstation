@@ -34,6 +34,7 @@ return [
     'your_subject' => 'الموضوع',
     'your_message' => 'رسالتك',
     'send_message' => 'إرسال الرسالة',
+    'your_password' => 'كلمة السر',
 
     /* Info */
     'contact_info' => 'معلومات التواصل',
@@ -47,4 +48,8 @@ return [
 
     /* General */
     'hello' => 'مرحباً',
+
+    'login' => 'تسجيل الدخول',
+    'singup' => 'انشاء حساب',
+    'logout' => 'تسجيل الخروج'
 ];

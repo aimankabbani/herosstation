@@ -415,3 +415,11 @@ section {
 .opacity-01 {
     opacity: 0.1 !important;
 }
+
+[dir="rtl"] .modal-content {
+    text-align: right;
+}
+
+[dir="ltr"] .modal-content {
+    text-align: left;
+}

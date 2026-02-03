@@ -34,6 +34,7 @@ return [
     'your_subject' => 'Your Subject',
     'your_message' => 'Your Message',
     'send_message' => 'Send Message',
+    'your_password' => 'Password',
 
     /* Info */
     'contact_info' => 'Contact Info',
@@ -47,4 +48,8 @@ return [
 
     /* General */
     'hello' => 'Hello',
+
+    'singup' => 'Create Account',
+    'login' => 'Login',
+    'logout' => 'Logout'
 ];

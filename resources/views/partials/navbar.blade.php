@@ -1,17 +1,63 @@
 <header class="header">
     <!-- Logo -->
-    <a href="/" class="logo d-flex align-items-center pt-3">
+    <a href="/" class="logo d-flex align-items-center pt-1">
         <img src="{{ url(asset('assets/images/logo.png')) }}" width="200" height="100" alt="Logo">
     </a>
 
     <nav class="nav">
-        <ul class="nav-links mb-0">
+        <ul class="nav-links mb-0 d-flex align-items-center gap-3">
+
+            @guest
+            <li class="nav-item">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" class="nav-link text-white">
+                    {{__('translate.login')}}
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" class="nav-link text-white">
+                    {{__('translate.singup')}}
+                </a>
+            </li>
+            @endguest
+
+
+            @auth
+            <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle text-white"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown">
+
+                    👤 {{ auth()->user()->name }}
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button class="dropdown-item text-danger">
+                                {{__('translate.logout')}}
+                            </button>
+                        </form>
+                    </li>
+
+                </ul>
+            </li>
+            @endauth
+
+
             @foreach($globalMenus as $menu)
-            <li><a href="{{ $menu->link }}" class="text-white">
+            <li>
+                <a href="{{ $menu->link }}" class="text-white nav-link">
                     {{ $menu->{'title_' . app()->getLocale()} }}
+                </a>
             </li>
             @endforeach
+
         </ul>
+
 
         <div class="divider"></div>
 
@@ -24,3 +70,66 @@
         </a>
     </nav>
 </header>
+
+
+<div class="modal fade" id="loginModal" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr'}}">
+    <div class="modal-dialog">
+        <div class="modal-content p-4">
+
+            <h5>{{__('translate.login')}}</h5>
+
+            <form id="loginForm">
+                @csrf
+                <input class="form-control mb-2" name="email" type="email" placeholder="{{__('translate.email')}}">
+                <input class="form-control mb-3" name="password" type="password" placeholder="{{__('translate.your_password')}}">
+
+                <button class="btn btn-warning w-100">{{__('translate.login')}}</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="registerModal" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr'}}">
+    <div class="modal-dialog">
+        <div class="modal-content p-4">
+
+            <h5>{{__('translate.singup')}}</h5>
+
+            <form id="registerForm">
+                @csrf
+                <input class="form-control mb-2" name="name" placeholder="{{__('translate.your_name')}}">
+                <input class="form-control mb-2" name="email" type="email" placeholder="{{__('translate.email')}}">
+                <input class="form-control mb-3" name="password" type="password" placeholder="{{__('translate.your_password')}}">
+
+                <button class="btn btn-warning w-100">{{__('translate.singup')}}</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function ajaxForm(id, url) {
+        document.getElementById(id).onsubmit = async function(e) {
+            e.preventDefault();
+
+            let form = new FormData(this);
+
+            let res = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                },
+                body: form
+            });
+
+            if (res.ok) location.reload();
+            else alert('Invalid data');
+        }
+    }
+
+    ajaxForm('loginForm', '/login');
+    ajaxForm('registerForm', '/register');
+</script>
