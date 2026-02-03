@@ -245,9 +245,6 @@ $siteId = $site->id ?? 1;
     </div>
 </section>
 
-
-
-
 <section id="contact" class="py-5">
     <div class="container">
 
@@ -310,7 +307,6 @@ $siteId = $site->id ?? 1;
                         </div>
                     </div>
 
-                    <!-- Address -->
                     <div class="d-flex align-items-start mb-3 gap-1">
                         <div class="me-3 d-flex align-items-center justify-content-center rounded-circle border border-white" style="width: 50px; height: 50px;">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="24" height="24">
@@ -320,10 +316,11 @@ $siteId = $site->id ?? 1;
                         </div>
 
                         <div>
-                            <h5 class="mb-1">Address</h5>
+                            <h5 class="mb-1"></u>Address</u></h5>
                             <p class="mb-0"><b>دمشق, سوريا </b>داماسكينو مول , B3</p>
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -353,6 +350,27 @@ $siteId = $site->id ?? 1;
         </div>
     </div>
 </section>
+
+
+<!-- Address with Embedded Map -->
+<section class="mb-4">
+    <div class="container">
+        <!-- Embedded Google Map -->
+        <div class="map-container" style="width: 100%; height: 300px; border-radius:10px; overflow:hidden;">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.540367984123!2d36.27338621520915!3d33.50060818077106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1518e127fff3c7bf%3A0x31aff5f1c5ce3cbe!2sHeroes%20Station!5e0!3m2!1sen!2ssy!4v1706198322321!5m2!1sen!2ssy"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+
+</section>
+
 
 
 @endsection
