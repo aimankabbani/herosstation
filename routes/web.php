@@ -6,6 +6,8 @@ use App\Http\Controllers\MainSiteController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PhoneNumberController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ReserveNow;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
@@ -19,12 +21,15 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/ratings/{site_id}', [RatingController::class, 'get']);
 
+Route::post('/reserve', [ReservationController::class, 'store'])->name('reserve.store');
 
 Route::group([
     'prefix' => '{locale?}',
     'where' => ['locale' => 'ar|en'],
     'middleware' => 'setLocale'
 ], function () {
+
+    Route::get('reserve-now', [ReserveNow::class, 'index'])->name('reservation');
 
     Route::get('/', [MainSiteController::class, 'index'])->name('main.index');
 

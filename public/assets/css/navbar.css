@@ -1,3 +1,7 @@
+:root {
+    --text-yellow: #fec544;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -132,4 +136,8 @@ body {
     .divider {
         display: none;
     }
+}
+
+.text-yellow {
+    color: var(--text-yellow) !important;
 }

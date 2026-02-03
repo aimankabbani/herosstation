@@ -63,4 +63,17 @@ return [
 
     'please_select_stars' => 'يرجى اختيار عدد النجوم قبل الإرسال.',
     'please_write_feedback' => 'يرجى كتابة ملاحظاتك قبل الإرسال.',
+
+    'choose_date' => 'اختر التاريخ',
+    'reserve_now' => 'احجز الآن',
+    'choose_activity' => 'اختر النشاط',
+    'choose_time' => 'اختر الوقت',
+    'please_select_time' => 'يرجى اختيار الوقت للحجز',
+    'please_select_date' => 'يرجى اختيار التاريخ للحجز',
+    'please_select_activity' => 'يرجى اختيار النشاط للحجز',
+
+    'no_account' => "لا تملك حساب؟",
+    'sign_up_here' => "سجل هنا",
+
+
 ];

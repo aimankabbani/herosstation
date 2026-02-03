@@ -64,4 +64,17 @@ return [
     'please_select_stars' => 'Please select stars before submitting.',
     'please_write_feedback' => 'Please write feedback before submitting.',
 
+    'reserve_now' => 'Reserve Now',
+    'choose_activity' => 'Choose activity',
+
+    'choose_date' => 'Choose date',
+    'choose_time' => 'Choose time',
+    'please_select_time' => 'Please select a time for your reservation',
+    'please_select_date' => 'Please select a date for your reservation',
+    'please_select_activity' => 'Please select an activity to reserve',
+
+
+    'no_account' => "Don't have an account?",
+    'sign_up_here' => "Sign up here",
+
 ];
