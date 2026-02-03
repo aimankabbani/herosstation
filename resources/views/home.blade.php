@@ -190,7 +190,7 @@ $siteId = $site->id ?? 1;
                 <input type="hidden" name="stars" id="starsInput-{{ $siteId }}" value="{{ $userRating->stars ?? 0 }}">
 
                 <!-- Star Rating -->
-                <div class="stars mb-3 fs-2 text-yellow" >
+                <div class="stars mb-3 fs-2 text-yellow">
                     @for($i=1; $i<=5; $i++)
                         <span class="star" data-star="{{ $i }}" style="cursor:pointer;">
                         ☆
@@ -199,7 +199,7 @@ $siteId = $site->id ?? 1;
                 </div>
 
                 <!-- Note Textarea -->
-                <textarea class="form-control mb-3" name="note" rows="2" placeholder="{{ __('translate.leave_note') }}" style="border-radius:8px;"></textarea>
+                <textarea class="form-control mb-3" id="note-{{ $siteId }}" name="note" rows="2" placeholder="{{ __('translate.leave_note') }}" style="border-radius:8px;"></textarea>
 
                 <button type="submit" class="btn btn-yellow w-100 fw-bold">{{ __('translate.submit_rating') }}</button>
             </form>
@@ -363,6 +363,7 @@ $siteId = $site->id ?? 1;
         const siteId = '{{ $siteId }}';
         const form = document.getElementById(`ratingForm-${siteId}`);
         const starsInput = document.getElementById(`starsInput-${siteId}`);
+        const noteInput = document.getElementById(`note-${siteId}`);
         const starsContainer = document.getElementById(`rating-${siteId}`).querySelector('.stars');
 
         let selectedStars = parseInt(starsInput.value) || 0;
@@ -382,8 +383,14 @@ $siteId = $site->id ?? 1;
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
+            // Validation
             if (selectedStars === 0) {
-                alert('Please select stars before submitting.');
+                alert("{{ __('translate.please_select_stars') }}");
+                return;
+            }
+
+            if (!noteInput.value.trim()) {
+                alert("{{ __('translate.please_write_feedback') }}");
                 return;
             }
 

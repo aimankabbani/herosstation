@@ -60,4 +60,7 @@ return [
     'no_reviews_yet' => 'لا توجد تقييمات بعد. كن أول من يقيم!',
     'leave_note' => 'اترك ملاحظة',
     'average_rating' => 'متوسط التقييم',
+
+    'please_select_stars' => 'يرجى اختيار عدد النجوم قبل الإرسال.',
+    'please_write_feedback' => 'يرجى كتابة ملاحظاتك قبل الإرسال.',
 ];

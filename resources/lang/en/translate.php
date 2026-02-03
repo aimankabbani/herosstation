@@ -60,4 +60,8 @@ return [
     'no_reviews_yet' => 'No reviews yet. Be the first to rate!',
     'leave_note' => 'Leave a note',
     'average_rating' => 'Average Rating',
+
+    'please_select_stars' => 'Please select stars before submitting.',
+    'please_write_feedback' => 'Please write feedback before submitting.',
+
 ];
