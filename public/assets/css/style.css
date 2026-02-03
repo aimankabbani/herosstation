@@ -408,6 +408,10 @@ section {
 .text-yellow {
     color: var(--text-yellow);
 }
+
+.btn-yellow {
+    background-color: var(--text-yellow) !important;
+}
 .container {
     color: white;
 }

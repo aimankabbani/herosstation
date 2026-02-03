@@ -48,7 +48,7 @@
 
         <!-- Title -->
         <div class="title-container d-flex flex-column align-items-center justify-content-center position-relative">
-            <h2 class="title mb-3 text-warning position-relative">
+            <h2 class="title mb-3 text-yellow position-relative">
                 {{ $page['about-us']->title }}
             </h2>
 
@@ -104,7 +104,7 @@
                 {{ __('translate.services') }}
             </div>
 
-            <h2 class="title fw-bold mb-3 text-warning position-relative">
+            <h2 class="title fw-bold mb-3 text-yellow position-relative">
                 {{ __('translate.services') }}
             </h2>
 
@@ -146,7 +146,7 @@
                 {{ __('translate.portfolio') }}
             </div>
 
-            <h2 class="title fw-bold mb-3 text-warning position-relative">
+            <h2 class="title fw-bold mb-3 text-yellow position-relative">
                 {{ __('translate.portfolio') }}
             </h2>
 
@@ -176,6 +176,77 @@
     </div>
 </section>
 
+@php
+$siteId = $site->id ?? 1;
+@endphp
+<section class="py-5">
+    <div class="container">
+        <div id="rating-{{ $siteId }}" class="mb-5 p-4 rounded shadow-sm" style="background:#fff; border:1px solid #eee;">
+            <h4 class="fw-bold mb-3 text-yellow">{{ __('translate.rate_this_site') }}</h4>
+
+            <form id="ratingForm-{{ $siteId }}">
+                @csrf
+                <input type="hidden" name="site_id" value="{{ $siteId }}">
+                <input type="hidden" name="stars" id="starsInput-{{ $siteId }}" value="{{ $userRating->stars ?? 0 }}">
+
+                <!-- Star Rating -->
+                <div class="stars mb-3 fs-2 text-yellow" >
+                    @for($i=1; $i<=5; $i++)
+                        <span class="star" data-star="{{ $i }}" style="cursor:pointer;">
+                        ☆
+                        </span>
+                        @endfor
+                </div>
+
+                <!-- Note Textarea -->
+                <textarea class="form-control mb-3" name="note" rows="2" placeholder="{{ __('translate.leave_note') }}" style="border-radius:8px;"></textarea>
+
+                <button type="submit" class="btn btn-yellow w-100 fw-bold">{{ __('translate.submit_rating') }}</button>
+            </form>
+
+            <!-- Average Rating -->
+            <div class="average-rating mt-4 mb-3">
+                <h5 class="text-yellow">{{ __('translate.average_rating') }} <span id="avg-{{ $siteId }}">{{ number_format($averageRating, 0) }}</span> / 5</h5>
+            </div>
+
+            <!-- Last 5 Reviews -->
+            @if($lastReviews->count() > 0)
+            <h5 class="fw-bold mb-3" style="color:#023047;">{{ __('translate.latest_reviews') }}</h5>
+            <div class="row g-3">
+                @foreach($lastReviews as $review)
+                <div class="col-md-12">
+                    <div class="card p-3 shadow-sm text-end" style="border-radius:10px;">
+                        <div class="d-flex align-items-center mb-2">
+                            <!-- User avatar or initials -->
+                            <div class="me-3" style="width:40px; height:40px; border-radius:50%; background:#FFB703; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:bold;">
+                                {{ strtoupper(substr($review->user->name,0,1)) }}
+                            </div>
+                            <div>
+                                <strong>{{ $review->user->name }}</strong>
+                                <div class="stars" style="color:#FFB703; font-size:1rem;">
+                                    @for($i=1; $i<=5; $i++)
+                                        <span>{{ $i <= $review->stars ? '★' : '☆' }}</span>
+                                        @endfor
+                                </div>
+                            </div>
+                        </div>
+                        @if($review->note)
+                        <p class="mb-1" style="color:#555;">{{ $review->note }}</p>
+                        @endif
+                        <small class="text-muted">{{ $review->created_at->diffForHumans() }}</small>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            @else
+            <p class="text-yellow"> {{ __('translate.no_reviews_yet') }}</p>
+            @endif
+        </div>
+    </div>
+</section>
+
+
+
 
 <section id="contact" class="py-5">
     <div class="container">
@@ -188,7 +259,7 @@
                 {{ __('translate.contact_us') }}
             </div>
 
-            <h2 class="title fw-bold mb-3 text-warning position-relative">
+            <h2 class="title fw-bold mb-3 text-yellow position-relative">
                 {{ __('translate.contact_us') }}
             </h2>
 
@@ -273,7 +344,7 @@
                         <div class="mb-3">
                             <textarea class="form-control" placeholder="{{__('translate.your_message')}}" rows="5"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-warning rounded-pill text-muted">{{__('translate.send_message')}}</button>
+                        <button type="submit" class="btn btn-yellow rounded-pill text-muted">{{__('translate.send_message')}}</button>
 
                     </form>
                 </div>
@@ -282,6 +353,57 @@
         </div>
     </div>
 </section>
+
+
+@endsection
+
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const siteId = '{{ $siteId }}';
+        const form = document.getElementById(`ratingForm-${siteId}`);
+        const starsInput = document.getElementById(`starsInput-${siteId}`);
+        const starsContainer = document.getElementById(`rating-${siteId}`).querySelector('.stars');
+
+        let selectedStars = parseInt(starsInput.value) || 0;
+
+        // Highlight stars on click
+        starsContainer.querySelectorAll('.star').forEach(star => {
+            star.addEventListener('click', function() {
+                selectedStars = parseInt(this.dataset.star);
+                starsInput.value = selectedStars; // update hidden input
+                starsContainer.querySelectorAll('.star').forEach((s, i) => {
+                    s.textContent = i < selectedStars ? '★' : '☆';
+                });
+            });
+        });
+
+        // Submit form
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            if (selectedStars === 0) {
+                alert('Please select stars before submitting.');
+                return;
+            }
+
+            const formData = new FormData(form);
+
+            const res = await fetch('/rate', {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: formData
+            });
+
+            const data = await res.json();
+            if (data.status) {
+                location.reload();
+            }
+        });
+    });
+</script>
 
 
 @endsection

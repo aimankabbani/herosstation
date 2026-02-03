@@ -98,7 +98,7 @@ class PhoneNumbersResource extends Resource
             ->filters([
                 Tables\Filters\SelectFilter::make('hall_id')
                     ->label('Hall')
-                    ->relationship('hall', 'name_ar'),
+                    ->relationship('hall', 'name_en'),
             ])
             ->actions([
                 // Tables\Actions\EditAction::make(),

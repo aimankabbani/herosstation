@@ -51,5 +51,13 @@ return [
 
     'singup' => 'Create Account',
     'login' => 'Login',
-    'logout' => 'Logout'
+    'logout' => 'Logout',
+
+    // Rating Section
+    'rate_this_site' => 'Share your feedback',
+    'submit_rating' => 'Submit Rating',
+    'latest_reviews' => 'Latest Reviews',
+    'no_reviews_yet' => 'No reviews yet. Be the first to rate!',
+    'leave_note' => 'Leave a note',
+    'average_rating' => 'Average Rating',
 ];

@@ -51,5 +51,13 @@ return [
 
     'login' => 'تسجيل الدخول',
     'singup' => 'انشاء حساب',
-    'logout' => 'تسجيل الخروج'
+    'logout' => 'تسجيل الخروج',
+
+    // Rating Section
+    'rate_this_site' => 'شارك رأيك',
+    'submit_rating' => 'إرسال التقييم',
+    'latest_reviews' => 'أحدث التقييمات',
+    'no_reviews_yet' => 'لا توجد تقييمات بعد. كن أول من يقيم!',
+    'leave_note' => 'اترك ملاحظة',
+    'average_rating' => 'متوسط التقييم',
 ];

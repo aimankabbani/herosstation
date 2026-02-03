@@ -5,11 +5,19 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MainSiteController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PhoneNumberController;
+use App\Http\Controllers\RatingController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+Route::middleware('auth')->group(function () {
+    Route::post('/rate', [RatingController::class, 'store']);
+});
+
+Route::get('/ratings/{site_id}', [RatingController::class, 'get']);
 
 
 Route::group([

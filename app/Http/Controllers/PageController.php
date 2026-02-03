@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
+use App\Models\Rating;
 use App\Models\Site;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class PageController extends Controller
             ->where('is_published', true)
             ->get()
             ->first();
-        
+
         return view('page', compact('page'));
     }
 
@@ -71,6 +72,16 @@ class PageController extends Controller
             }
         }
 
-        return view('home', compact('site', 'page'));
+        $userRating = auth()->user() ? Rating::where('user_id', auth()->id())->where('site_id', $site->id)->first() : null;
+
+        $lastReviews = Rating::where('site_id', $site->id)
+            ->latest()
+            ->take(5)
+            ->with('user')
+            ->get();
+
+        $averageRating = Rating::where('site_id', $site->id)->avg('stars');
+
+        return view('home', compact('site', 'page', 'userRating', 'lastReviews', 'averageRating'));
     }
 }
