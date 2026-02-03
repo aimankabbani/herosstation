@@ -24,6 +24,13 @@ class PhoneNumberController extends Controller
         return view('user.create', ['countries' => $countries, 'hallId' => $hallId]);
     }
 
+    public function spacecStation()
+    {
+        $countries = Countries::all();
+        $hallId = StationType::SPACE_STATION;
+        return view('user.create', ['countries' => $countries, 'hallId' => $hallId]);
+    }
+
     public function cartingStation()
     {
         $countries = Countries::all();

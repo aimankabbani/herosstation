@@ -38,6 +38,7 @@ Route::group([
     Route::prefix('customer')->group(function () {
         Route::get('/bowling-station', [PhoneNumberController::class, 'bowlingStation'])->name('bowling-station.index');
         Route::get('/carting-station', [PhoneNumberController::class, 'cartingStation'])->name('carting-station.index');
+        Route::get('/space-planet', [PhoneNumberController::class, 'spacecStation'])->name('space-station.index');
         Route::post('/bowling-station', [PhoneNumberController::class, 'create'])->name('phone.store');
     });
 
