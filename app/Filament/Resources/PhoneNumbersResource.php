@@ -20,6 +20,8 @@ class PhoneNumbersResource extends Resource
     protected static ?string $model = PhoneNumbers::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationLabel = 'Numbers';
+    protected static ?string $navigationGroup = 'Reports';
 
     // ---------------- FORM ----------------
     public static function form(Form $form): Form

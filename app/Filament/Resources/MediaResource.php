@@ -17,7 +17,7 @@ class MediaResource extends Resource
     protected static ?string $model = Media::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-photo';
-    protected static ?string $navigationGroup = 'Site Management';
+    protected static ?string $navigationGroup = 'Website';
     protected static ?string $label = 'Media';
     protected static ?string $pluralLabel = 'Media';
 

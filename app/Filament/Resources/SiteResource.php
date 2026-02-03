@@ -16,7 +16,7 @@ class SiteResource extends Resource
     protected static ?string $model = Site::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-globe-alt';
-    protected static ?string $navigationGroup = 'Site Management';
+    protected static ?string $navigationGroup = 'Website';
     protected static ?string $label = 'Site';
     protected static ?string $pluralLabel = 'Sites';
 
