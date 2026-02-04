@@ -113,6 +113,20 @@ class SiteResource extends Resource
                                     ->label('Phone Number')
                                     ->tel(),
                             ]),
+
+                        Forms\Components\Tabs\Tab::make('Settings')
+                            ->schema([
+                                Forms\Components\TextInput::make('settings.facebook')
+                                    ->label('Facebook Link')
+                                    ->nullable(),
+                            ]),
+
+                        Forms\Components\Tabs\Tab::make('Settings')
+                            ->schema([
+                                Forms\Components\TextInput::make('settings.instagram')
+                                    ->label('Instagram Link')
+                                    ->nullable(),
+                            ]),
                     ])
                     ->columnSpanFull(),
             ]);
@@ -133,6 +147,12 @@ class SiteResource extends Resource
 
                 Tables\Columns\TextColumn::make('phone_number')
                     ->label('Phone'),
+
+                // Tables\Columns\TextColumn::make('facebook')
+                //     ->label('Facebook Link'),
+
+                // Tables\Columns\TextColumn::make('instagram')
+                //     ->label('Instagram Link'),
 
                 Tables\Columns\ImageColumn::make('logo_path')
                     ->disk('public')

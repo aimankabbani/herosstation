@@ -76,5 +76,5 @@ return [
 
     'no_account' => "Don't have an account?",
     'sign_up_here' => "Sign up here",
-
+    'follow_us' => 'Follow us'
 ];

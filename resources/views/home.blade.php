@@ -303,7 +303,7 @@ $siteId = $site->id ?? 1;
 
                         <div>
                             <h5 class="mb-1">{{__('translate.phone')}}</h5>
-                            <p class="mb-0" dir="ltr">+963-987-040-707</p>
+                            <p class="mb-0" dir="ltr">{{$site->phone_number ?? ' +963-987-040-707'}}</p>
                         </div>
                     </div>
 
@@ -316,8 +316,49 @@ $siteId = $site->id ?? 1;
                         </div>
 
                         <div>
-                            <h5 class="mb-1"></u>Address</u></h5>
+                            <h5 class="mb-1"></u>{{__('translate.address')}}</u></h5>
                             <p class="mb-0"><b>دمشق, سوريا </b>داماسكينو مول , B3</p>
+                        </div>
+                    </div>
+                    <!-- Social Media -->
+                    <div class="d-flex align-items-start mb-3 gap-1">
+                        <div class="me-3 d-flex align-items-center justify-content-center rounded-circle border border-white"
+                            style="width: 50px; height: 50px;">
+
+                            <!-- share icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="1.5" width="24" height="24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M7.5 12a4.5 4.5 0 019 0m-9 0a4.5 4.5 0 009 0m-9 0v.01M12 7.5v.01M16.5 12v.01M12 16.5v.01" />
+                            </svg>
+                        </div>
+
+                        <div>
+                            <h5 class="mb-2">{{ __('translate.follow_us') ?? 'Follow Us' }}</h5>
+
+                            <div class="d-flex gap-3">
+
+                                <!-- Facebook -->
+                                <a href="{{$site->facebook ?? 'https://www.facebook.com/HeroesStation1'}}"
+                                    target="_blank"
+                                    class="text-white text-decoration-none">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 24 24" width="22" height="22">
+                                        <path d="M22 12a10 10 0 10-11.5 9.87v-6.99H7.9V12h2.6V9.8c0-2.56 1.52-3.98 3.84-3.98 1.11 0 2.27.2 2.27.2v2.5h-1.28c-1.27 0-1.67.79-1.67 1.6V12h2.85l-.46 2.88h-2.39v6.99A10 10 0 0022 12z" />
+                                    </svg>
+                                </a>
+
+                                <!-- Instagram -->
+                                <a href="{{$site->instagram ?? 'https://www.instagram.com/heroesstation1/'}}"
+                                    target="_blank"
+                                    class="text-white text-decoration-none">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        viewBox="0 0 24 24" width="22" height="22">
+                                        <path d="M7.5 2h9A5.5 5.5 0 0122 7.5v9A5.5 5.5 0 0116.5 22h-9A5.5 5.5 0 012 16.5v-9A5.5 5.5 0 017.5 2zm0 2A3.5 3.5 0 004 7.5v9A3.5 3.5 0 007.5 20h9a3.5 3.5 0 003.5-3.5v-9A3.5 3.5 0 0016.5 4h-9zm4.5 3.25A5.25 5.25 0 1112 17.75 5.25 5.25 0 0112 7.25zm0 2A3.25 3.25 0 1015.25 12 3.25 3.25 0 0012 9.25zm4.75-2.75a1 1 0 110 2 1 1 0 010-2z" />
+                                    </svg>
+                                </a>
+
+                            </div>
                         </div>
                     </div>
 

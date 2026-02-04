@@ -75,5 +75,5 @@ return [
     'no_account' => "لا تملك حساب؟",
     'sign_up_here' => "سجل هنا",
 
-
+    "follow_us" => 'تابعنا'
 ];

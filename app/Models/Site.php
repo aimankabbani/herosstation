@@ -33,7 +33,7 @@ class Site extends Model
         'settings' => 'array',
     ];
 
-    protected $appends = ['phone_number'];
+    protected $appends = ['phone_number', 'facebook', 'instagram'];
 
     public function pages()
     {
@@ -65,6 +65,16 @@ class Site extends Model
     public function getPhoneNumberAttribute()
     {
         return $this->settings['phone_number'] ?? null;
+    }
+
+    public function getFacebookAttribute()
+    {
+        return $this->settings['facebook'] ?? null;
+    }
+
+    public function getInstagramAttribute()
+    {
+        return $this->settings['instagram'] ?? null;
     }
 
     public function services()
