@@ -37,6 +37,7 @@
     </div>
 
 </section>
+@if($page && !empty($page['about-us']))
 <section id="about" class="py-5">
     <div class="container position-relative text-center">
 
@@ -91,7 +92,9 @@
         </div>
     </div>
 </section>
+@endif
 
+@if(count($site->services))
 <section id="services" class="py-5">
     <div class="container text-center">
 
@@ -135,7 +138,9 @@
 
     </div>
 </section>
+@endif
 
+@if(count($site->media))
 <section id="portfolio" class="portfolio scroll-up delay-4">
     <div class="container text-center">
         <div class="title-container d-flex flex-column align-items-center justify-content-center position-relative mb-5">
@@ -175,7 +180,7 @@
 
     </div>
 </section>
-
+@endif
 @php
 $siteId = $site->id ?? 1;
 @endphp
