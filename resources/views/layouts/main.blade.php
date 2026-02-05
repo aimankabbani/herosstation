@@ -19,7 +19,7 @@
     @include('partials.navbar')
     <div class="container">
 
-
+        @yield('ads')
         @if(isset($sites) && $sites->count())
         <section class="hero">
             <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">

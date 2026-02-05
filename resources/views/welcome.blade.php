@@ -4,6 +4,33 @@
 
 @section('style')
 <style>
+    /* Ads banner container */
+    #adsCarousel,
+    #adsCarousel .carousel-inner,
+    #adsCarousel .carousel-item {
+        height: 140px;
+        /* ⭐ fixed banner height */
+        max-height: 140px;
+    }
+
+    /* Ads carousel height control */
+    #adsCarousel {
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+    }
+
+    #adsCarousel .ad-banner-img {
+        width: 100%;
+        height: 140px;
+        /* crop nicely */
+        display: block;
+        object-fit: fill;
+        /* fill without distortion */
+        object-position: center;
+        /* center crop */
+    }
+
     #page-loader {
         position: fixed;
         inset: 0;
@@ -59,6 +86,45 @@
 <div id="page-loader">
     <div class="loader"></div>
 </div>
+@section('ads')
+@if(count($ads))
+<section class="py-2">
+    <div class="container-fluid px-3">
+
+        <div id="adsCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+            <div class="carousel-inner">
+
+                @foreach($ads as $index => $slide)
+                <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                    <img
+                        src="{{ !empty($slide->image_url) 
+                                    ? asset('storage/'.$slide->image_url) 
+                                    : 'https://picsum.photos/1200/400?random=' . $slide->id }}"
+                        class="ad-banner-img"
+                        alt="Ad Banner">
+                </div>
+                @endforeach
+
+            </div>
+
+            {{-- Controls OUTSIDE loop --}}
+            <button class="carousel-control-prev" type="button" data-bs-target="#adsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#adsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+@endif
+@endsection
+
 <section class="py-5">
     <div class="container">
         <div class="row g-4">
