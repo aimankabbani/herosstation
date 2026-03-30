@@ -3,7 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PhoneNumbersResource\Pages;
-use App\Http\Services\UltraMsgService;
+use App\Http\Services\NabdaService;
 use App\Models\PhoneNumbers;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -114,11 +114,9 @@ class PhoneNumbersResource extends Resource
                             ->required()
                     ])
                     ->action(function (Collection $records, array $data) {
-                        // $data => $data['message']
-                        // dd($records[0]->phone,$data);
-                        $ultraMsg = app(\App\Http\Services\UltraMsgService::class);
+                        $msgs = app(NabdaService::class);
 
-                        $ultraMsg->sendBulk($records, $data['message']);
+                        $msgs->sendBulk($records, $data['message']);
 
                         Notification::make()
                             ->title('Bulk messages sent successfully!')
