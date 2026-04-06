@@ -81,7 +81,7 @@
 
         <div class="divider"></div>
 
-        <a href='https://wa.me/963949512052'
+        <a href='https://wa.me/+963987040700'
             class="phone" target="_blank" rel="noopener">
             <svg class="phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
